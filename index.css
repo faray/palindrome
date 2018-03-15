@@ -1,0 +1,30 @@
+#main{
+    display: grid;
+    grid-template-columns:  2fr 1fr;
+    grid-template-rows: auto;
+    margin: 2% 10% 2% 7%;
+  }
+  #word-textbox{
+    width: 400px;
+    
+  }
+
+#headerText{
+  text-align:center;
+}
+#ibox{
+    padding: 70px 0;
+}
+#prevBox{
+  
+}
+
+body{
+      background-color: gray;
+  }
+
+  #root{
+     margin:0 60px 0 60px;
+     background-color:white; 
+     height: 100%;
+  }
