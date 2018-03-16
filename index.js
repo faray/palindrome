@@ -1,3 +1,35 @@
+
+const ul = document.getElementById('words-list')
+
+function saveWord(word){
+    let wordsArray
+    if(localStorage.wordsArray){
+        wordsArray = JSON.parse(localStorage.wordsArray)
+        if(wordsArray.length == 5){
+            if(!(wordsArray[wordsArray.length-1].toLowerCase() === word.toLowerCase())){
+                wordsArray.shift()
+                wordsArray.push(word)
+                localStorage.wordsArray = JSON.stringify(wordsArray)
+            }
+            
+          }
+        else{
+            if(!(wordsArray[wordsArray.length-1].toLowerCase() === word.toLowerCase())){
+            wordsArray.push(word)
+            localStorage.wordsArray = JSON.stringify(wordsArray)
+            }
+          }
+    }
+
+    else{
+        localStorage.setItem("wordsArray",JSON.stringify([]))
+        wordsArray = JSON.parse(localStorage.wordsArray)
+        wordsArray.push(word)
+        localStorage.wordsArray = JSON.stringify(wordsArray)
+    }
+  
+}
+
 function checkIfPalindrome() {
     let words = document.getElementById("word-textbox").value
     document.getElementById("ew").innerHTML = words
@@ -6,6 +38,7 @@ function checkIfPalindrome() {
     }
     else{
         document.getElementById("answer").innerHTML = cpd(words)
+        saveWord(words)
     }
 }
 
@@ -43,3 +76,10 @@ function isPalindrome(str){
     return isPal(toChars(str))
 }
  
+
+const liMaker = (text)=>{
+    const li = document.createElement('li')
+    li.textContent = text
+    ul.appendChild(li)
+}
+
